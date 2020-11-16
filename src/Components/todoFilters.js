@@ -1,10 +1,9 @@
-import { StatusFilters } from '../Store/filtersReducer'
-import { FILTERCHANGE } from '../Store/actions';
-import { useDispatch, useSelector } from 'react-redux'
+import { StatusFilters } from '../Store/todoModel'
+import { selectVisibilityFilter } from '../Store/todosQuery'
+import { updateFilter } from '../Store/todosService'
+import { useObservable } from '@libreact/use-observable';
 
 const TodoFilters = (props) => {
-
-    const dispatch = useDispatch();
 
     const StatusFilter = ({ value: status, onChange }) => {
         const renderedFilters = Object.keys(StatusFilters).map((key) => {
@@ -15,7 +14,7 @@ const TodoFilters = (props) => {
             return (
                 <li key={value}>
                     <button className={className} onClick={handleClick}>
-                    {key}
+                        {key}
                     </button>
                 </li>
             )
@@ -29,10 +28,10 @@ const TodoFilters = (props) => {
         )
     }
 
-    const { status } = useSelector((state) => state.filters)
+    const [status] = useObservable(selectVisibilityFilter);
 
     const onStatusChange = (status) => {
-        dispatch({ type: FILTERCHANGE, payload: status }) 
+        updateFilter(status);
     }
 
     return (

@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { GETTODOS } from '../Store/actions';
-import { selectFilteredTodos } from '../Store/todosReducer'
-import Todo from './todo'
+import Todo from './todo';
+import { selectVisibleTodos } from '../Store/todosQuery';
+import { useObservable } from '@libreact/use-observable';
 
 const TodoList = () => {
 
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch( { type: GETTODOS})
-  })
+  /* useEffect(() => {
+  }) */
   
-  const filteredTodos = useSelector(selectFilteredTodos)
+  const [filteredTodos] = useObservable(selectVisibleTodos);
 
   const renderedListItems = filteredTodos.map(todo => 
       <Todo key={todo.id} todo={todo} />

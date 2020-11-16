@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux'
-import { TODOTOGGLED, TODOREMOVED, TODOEDIT } from '../Store/actions';
+import { removeTodo, toggleTodo, editTodo } from '../Store/todosService';
 import TodoEditModal from './Modal/todoEditModal';
+
 
 const Todo = (props) => {
     const completedStyle = {
@@ -11,23 +11,20 @@ const Todo = (props) => {
 
     const { id, text, completed } = props.todo
 
-    const dispatch = useDispatch();
-
     const handleToggle = () => {
-        dispatch( { type: TODOTOGGLED, payload: props.todo })
+        toggleTodo(id, completed);
     }
 
     const handleRemove = () => {
-        dispatch( {type: TODOREMOVED, payload: id })
+        removeTodo(id);
     }
-
+    
     const changeText = (text) => {
         const newText = text
 
-        dispatch (
-           {type: TODOEDIT, payload: {id, text: newText}}
-        )
+        editTodo(id, newText);
     }
+
     return (
         <li className="todo-item">
             <input

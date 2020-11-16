@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { TODOADD } from '../Store/actions';
+import { addTodo } from '../Store/todosService'
 
 function AddTodo() {
 
     const [todoName, setTodoName] = useState("");
     const [error, setErrorVisibility] = useState(false)
-
-    const dispatch = useDispatch();
     
     const sendTodoName = () => {
         if (todoName === "") {
@@ -15,7 +12,7 @@ function AddTodo() {
             return;
         }
         
-        dispatch( { type: TODOADD, payload: todoName });
+        addTodo(todoName)
         
         setTodoName('')
         setErrorVisibility(false)
