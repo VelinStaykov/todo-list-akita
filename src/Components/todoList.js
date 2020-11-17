@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import Todo from './todo';
 import { selectVisibleTodos } from '../Store/todosQuery';
 import { useObservable } from '@libreact/use-observable';
+import { setTodos } from '../Store/todosService';
 
 const TodoList = () => {
 
-
-  /* useEffect(() => {
-  }) */
+  useEffect(() => {
+    setTodos()
+  }, [])
   
   const [filteredTodos] = useObservable(selectVisibleTodos);
 

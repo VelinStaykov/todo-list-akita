@@ -1,7 +1,6 @@
 import { removeTodo, toggleTodo, editTodo } from '../Store/todosService';
 import TodoEditModal from './Modal/todoEditModal';
 
-
 const Todo = (props) => {
     const completedStyle = {
         color: "grey",

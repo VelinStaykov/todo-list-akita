@@ -1,8 +1,5 @@
-import { guid } from '@datorama/akita'
-
 export function createTodo(todoText) {
     return {
-        id: guid(),
         text: todoText,
         completed: false
     };
