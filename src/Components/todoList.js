@@ -1,19 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Todo from './todo';
-import { selectVisibleTodos } from '../Store/todosQuery';
-import { useObservable } from '@libreact/use-observable';
-import { setTodos } from '../Store/todosService';
 
-const TodoList = () => {
+const TodoList = (props) => {
 
-  useEffect(() => {
-    setTodos()
-  }, [])
+  const filteredTodos = props.todos
   
-  const [filteredTodos] = useObservable(selectVisibleTodos);
-
   const renderedListItems = filteredTodos.map(todo => 
-      <Todo key={todo.id} todo={todo} />
+      <Todo key={todo.id} todo={todo} removeTodo={props.removeTodo} toggleTodo={props.toggleTodo} editTodo={props.editTodo} />
   )
 
   return <ul className="todo-list">{renderedListItems}</ul>

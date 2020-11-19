@@ -1,4 +1,3 @@
-import { removeTodo, toggleTodo, editTodo } from '../Store/todosService';
 import TodoEditModal from './Modal/todoEditModal';
 
 const Todo = (props) => {
@@ -11,17 +10,15 @@ const Todo = (props) => {
     const { id, text, completed } = props.todo
 
     const handleToggle = () => {
-        toggleTodo(id, completed);
+        props.toggleTodo(id, completed)
     }
 
     const handleRemove = () => {
-        removeTodo(id);
+        props.removeTodo(id)
     }
     
     const changeText = (text) => {
-        const newText = text
-
-        editTodo(id, newText);
+        props.editTodo(id, text)
     }
 
     return (

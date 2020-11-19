@@ -1,7 +1,4 @@
 import { StatusFilters } from '../Store/todoModel'
-import { selectVisibilityFilter } from '../Store/todosQuery'
-import { updateFilter } from '../Store/todosService'
-import { useObservable } from '@libreact/use-observable';
 
 const TodoFilters = (props) => {
 
@@ -28,10 +25,10 @@ const TodoFilters = (props) => {
         )
     }
 
-    const [status] = useObservable(selectVisibilityFilter);
+    const status = props.status
 
     const onStatusChange = (status) => {
-        updateFilter(status);
+        props.updateFilter(status)
     }
 
     return (

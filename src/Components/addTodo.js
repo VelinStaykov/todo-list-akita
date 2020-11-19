@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { addTodo } from '../Store/todosService'
 
-function AddTodo() {
+function AddTodo(props) {
 
     const [todoName, setTodoName] = useState("");
     const [error, setErrorVisibility] = useState(false)
-    
+
     const sendTodoName = () => {
         if (todoName === "") {
             setErrorVisibility(true)
             return;
         }
         
-        addTodo(todoName)
+        props.addTodo(todoName)
         
         setTodoName('')
         setErrorVisibility(false)
@@ -31,7 +30,7 @@ function AddTodo() {
                 Add Todo
             </button>
             {error && (
-                <p className="error">Трябва да добавите име.</p>
+                <p className="error">You have to add text.</p>
             )}
         </header>
     )

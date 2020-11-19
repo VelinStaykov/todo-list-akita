@@ -2,7 +2,7 @@ import { createEntityStore } from "@datorama/akita";
 import { StatusFilters } from './todoModel'
 
 const initialState = {
-    filter: { status: StatusFilters.All }
+    ui: { status: StatusFilters.All }
 };
 
 export const todosStore = createEntityStore(
