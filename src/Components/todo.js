@@ -1,4 +1,5 @@
 import TodoEditModal from './Modal/todoEditModal';
+import { randomService } from '../Store/randomService';
 
 const Todo = (props) => {
     const completedStyle = {
@@ -21,6 +22,10 @@ const Todo = (props) => {
         props.editTodo(id, text)
     }
 
+    const randomFunction = () => {
+        randomService.randomMethod(props.todo)
+    }
+
     return (
         <li className="todo-item">
             <input
@@ -37,6 +42,11 @@ const Todo = (props) => {
                     className="button remove-button"
                     onClick={handleRemove}>
                     Remove
+                </button>
+                <button
+                    onClick={randomFunction}
+                >
+                    Copy
                 </button>
             </div>
         </li>
