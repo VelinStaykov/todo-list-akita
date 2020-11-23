@@ -9,12 +9,12 @@ import { todosStore } from './Store/todosStore';
 function App() {
   todosStore.setLoading(true)
   
-  const [{todos, ui}, addTodo, removeTodo, toggleTodo, editTodo, updateFilter] = useTodosFacade();
+  const [{todos, ui}, addTodo, removeTodo, toggleTodo, editTodo, updateFilter, randomMethod] = useTodosFacade();
     
   return (
     <div className="todo-list-app">
       <AddTodo addTodo={addTodo} />
-      <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+      <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} randomMethod={randomMethod} />
       <TodoFilters status={ui.status} updateFilter={updateFilter} />
     </div>
   )

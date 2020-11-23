@@ -1,5 +1,4 @@
 import TodoEditModal from './Modal/todoEditModal';
-import { randomService } from '../Store/randomService';
 
 const Todo = (props) => {
     const completedStyle = {
@@ -23,7 +22,7 @@ const Todo = (props) => {
     }
 
     const randomFunction = () => {
-        randomService.randomMethod(props.todo)
+        props.randomMethod(props.todo)
     }
 
     return (

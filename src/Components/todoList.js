@@ -6,7 +6,7 @@ const TodoList = (props) => {
   const filteredTodos = props.todos
   
   const renderedListItems = filteredTodos.map(todo => 
-      <Todo key={todo.id} todo={todo} removeTodo={props.removeTodo} toggleTodo={props.toggleTodo} editTodo={props.editTodo} />
+      <Todo key={todo.id} todo={todo} removeTodo={props.removeTodo} toggleTodo={props.toggleTodo} editTodo={props.editTodo} randomMethod={props.randomMethod} />
   )
 
   return <ul className="todo-list">{renderedListItems}</ul>
