@@ -1,8 +1,9 @@
 import { todosStore } from './todosStore'
 import { createTodo } from './todoModel'
 import { database } from '../Config/firebaseConfig'
+import { serviceFactory } from './serviceFactory'
 
-export class TodosService {
+/* export class TodosService {
     constructor(todosStore) {
         this.todosStore = todosStore;
     }
@@ -54,6 +55,8 @@ export class TodosService {
     updateFilter(status){
         this.todosStore.update({ui: {status} });
     }
-}
+} */
 
-export const todosService = new TodosService(todosStore)
+export const todosService = serviceFactory.createTodoService();
+
+// export const todosService = new TodosService(todosStore)
