@@ -44,25 +44,25 @@ export class TodosService {
             completed: todo.completed
         })
 
-        this._eventManager.dispatch(eventTypes.TODO_ADDED, { id : todo.id });
+        this._eventManager.dispatch(eventTypes.TODO_ADDED, todo );
     }
 
-    removeTodo(id){
-        database.collection('todos').doc(id).delete();
+    removeTodo(todo){
+        database.collection('todos').doc(todo.id).delete();
 
-        this._eventManager.dispatch(eventTypes.TODO_REMOVED, { id });
+        this._eventManager.dispatch(eventTypes.TODO_REMOVED, todo );
     }
 
-    toggleTodo(id, completed){
-        database.collection('todos').doc(id).update({completed: !completed});
+    toggleTodo(todo){
+        database.collection('todos').doc(todo.id).update({completed: !todo.completed});
 
-        this._eventManager.dispatch(eventTypes.TODO_TOGGLED, { id, completed });
+        this._eventManager.dispatch(eventTypes.TODO_TOGGLED, todo);
     }
 
-    editTodo(id, text){
-        database.collection('todos').doc(id).update({text: text});
+    editTodo(todo, text){
+        database.collection('todos').doc(todo.id).update({text: text});
 
-        this._eventManager.dispatch(eventTypes.TODO_EDITED, { id, text });
+        this._eventManager.dispatch(eventTypes.TODO_EDITED, {todo, text});
     }
 
     updateFilter(status){

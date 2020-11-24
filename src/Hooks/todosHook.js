@@ -10,9 +10,9 @@ function onEmit(source, nextFn) {
 
 export function useTodosFacade() {
     const addTodo = (text) => todosService.addTodo(text)
-    const removeTodo = (id) => todosService.removeTodo(id)
-    const toggleTodo = (id, completed) => todosService.toggleTodo(id, completed)
-    const editTodo = (id, text) => todosService.editTodo(id, text)
+    const removeTodo = (todo) => todosService.removeTodo(todo)
+    const toggleTodo = (todo) => todosService.toggleTodo(todo)
+    const editTodo = (todo, text) => todosService.editTodo(todo, text)
     const updateFilter = (status) => todosService.updateFilter(status)
     const [state, setState] = useState({ todos: [], ui: {status: StatusFilters.All }  });
 

@@ -12,20 +12,21 @@ class AnotherService {
         eventManager.addListener(eventTypes.TODO_TOGGLED, this.handleTodoToggledEvent);
     }
 
-    handleTodoAddedEvent({ id }) {
-        console.log(`Added new todo with id ${id}`);
+    handleTodoAddedEvent(todo) {
+        
+        console.log(`Added new todo with id ${todo.id}`);
     }
 
-    handleTodoRemovedEvent({ id }) {
-        console.log(`Removed todo with id ${id}`);
+    handleTodoRemovedEvent(todo) {
+        console.log(`Removed todo with id ${todo.id}`);
     }
 
-    handleTodoToggledEvent({ id, completed }) {
-        console.log(`Toggled todo with id ${id}, new status is ${completed}`);
+    handleTodoToggledEvent(todo) {
+        console.log(`Toggled todo with id ${todo.id}, new status is ${todo.completed}`);
     }
 
-    handleTodoEditedEvent({ id, text }) {
-        console.log(`Edited todo with ${id}, new text is ${text}`);
+    handleTodoEditedEvent({ todo, text }) {
+        console.log(`Edited todo with ${todo.id}, new text is ${text}`);
     }
 }
 
