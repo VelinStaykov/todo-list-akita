@@ -41,16 +41,16 @@ export class TodosService {
         return todo;
     }
 
-    removeTodo(id){
-        database.collection('todos').doc(id).delete();
+    removeTodo(todo){
+        database.collection('todos').doc(todo.id).delete();
     }
 
-    toggleTodo(id, completed){
-        database.collection('todos').doc(id).update({completed: !completed});
+    toggleTodo(todo){
+        database.collection('todos').doc(todo.id).update({completed: !todo.completed});
     }
 
-    editTodo(id, text){
-        database.collection('todos').doc(id).update({text: text});
+    editTodo(todo, text){
+        database.collection('todos').doc(todo.id).update({text: text});
     }
 
     updateFilter(status){

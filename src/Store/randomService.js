@@ -6,9 +6,9 @@ export class RandomService {
         todosService.addTodo(todo.text)
         .then((newTodo) => {
             const newText = newTodo.text + "(copy)";
-            todosService.editTodo(newTodo.id, newText)
+            todosService.editTodo(newTodo, newText)
         })
-        todosService.removeTodo(todo.id)
+        todosService.removeTodo(todo)
     }
 }
 
