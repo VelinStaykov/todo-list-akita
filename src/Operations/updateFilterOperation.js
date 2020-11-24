@@ -14,5 +14,3 @@ export class UpdateFilterOperation extends Operation {
 }
 
 export const updateFilterOperation = new UpdateFilterOperation(todosStore)
-
-

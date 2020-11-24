@@ -54,4 +54,4 @@ export class ServiceFactory {
     }
 }
 
-export const serviceFactory = new ServiceFactory();
+export const todosService = new ServiceFactory().createTodoService();

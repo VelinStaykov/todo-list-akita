@@ -7,4 +7,5 @@ export class RemoveTodoOperation extends Operation {
         database.collection('todos').doc(id).delete();
     }
 }
+
 export const removeTodoOperation = new RemoveTodoOperation();

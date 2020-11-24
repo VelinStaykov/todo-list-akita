@@ -1,4 +1,4 @@
-import { todosService } from '../Store/todosService';
+import { todosService } from '../Store/serviceFactory';
 import { useEffect, useState } from 'react';
 import { todosQuery } from '../Store/todosQuery'
 import { StatusFilters } from '../Store/todoModel';
@@ -23,7 +23,7 @@ export function useTodosFacade() {
 
         todosService.setTodos();
 
-        return () => { subscriptions.map( it => it.unsubscribe()) }
+        return () => { subscriptions.map( item => item.unsubscribe()) }
     }, [])
 
     return [state, addTodo, removeTodo, toggleTodo, editTodo, updateFilter]
