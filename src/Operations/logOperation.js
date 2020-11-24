@@ -7,6 +7,6 @@ export default class LogOperation {
     }
 
     perform(payload) {
-        console.log(`Performing operation : ${this._operationName} with params ${payload}`);
+        console.log(`Performing operation: ${this._operationName} with params ${payload}`);
     }
 }

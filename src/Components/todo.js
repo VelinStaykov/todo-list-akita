@@ -10,15 +10,11 @@ const Todo = (props) => {
     const { id, text, completed } = props.todo
 
     const handleToggle = () => {
-        props.toggleTodo(id, completed)
+        props.toggleTodo(props.todo)
     }
 
     const handleRemove = () => {
-        props.removeTodo(id)
-    }
-    
-    const changeText = (text) => {
-        props.editTodo(id, text)
+        props.removeTodo(props.todo)
     }
 
     return (
@@ -32,7 +28,7 @@ const Todo = (props) => {
                 {text}
             </p>
             <div className="todo-item-buttons" >
-                <TodoEditModal text={text} changeText={changeText} />
+                <TodoEditModal todo={props.todo} editTodo={props.editTodo} />
                 <button
                     className="button remove-button"
                     onClick={handleRemove}>

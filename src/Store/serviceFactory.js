@@ -34,7 +34,8 @@ export class ServiceFactory {
 
         service.editTodo = this._generateOperation([
             editTodoOperation,
-            new LogOperation("editTodo")
+            new LogOperation("editTodo"),
+            toggleTodoOperation
         ]);
 
         service.updateFilter = this._generateOperation([

@@ -3,8 +3,8 @@ import { database } from '../Config/firebaseConfig'
 
 export class RemoveTodoOperation extends Operation {
 
-    perform(id) {
-        database.collection('todos').doc(id).delete();
+    perform(todo) {
+        database.collection('todos').doc(todo.id).delete();
     }
 }
 
