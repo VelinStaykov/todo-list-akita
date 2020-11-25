@@ -4,13 +4,15 @@ import { database } from '../Config/firebaseConfig'
 
 export class AddTodoOperation extends Operation {
 
-    perform(text) {
+    async perform(text) {
         const todo = createTodo(text)
 
-        database.collection('todos').doc(`${todo.id}`).set({
+        await database.collection('todos').doc(`${todo.id}`).set({
             text: todo.text,
             completed: todo.completed
         })
+
+        return todo;
     }
 }
 

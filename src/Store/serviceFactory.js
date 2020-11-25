@@ -1,10 +1,12 @@
-import { addTodoOperation } from "../Operations/addTodoOperation";
-import { editTodoOperation } from "../Operations/editTodoOperation";
+import { AddTodoOperation } from "../Operations/addTodoOperation";
+import { EditTodoOperation } from "../Operations/editTodoOperation";
 import LogOperation from "../Operations/logOperation";
-import { removeTodoOperation } from "../Operations/removeTodoOperation";
-import { setTodosOperation } from "../Operations/setTodosOperation";
-import { toggleTodoOperation } from "../Operations/toggleTodoOperation";
-import { updateFilterOperation } from "../Operations/updateFilterOperation";
+import { RemoveTodoOperation } from "../Operations/removeTodoOperation";
+import { SetTodosOperation } from "../Operations/setTodosOperation";
+import { ToggleTodoOperation } from "../Operations/toggleTodoOperation";
+import { UpdateFilterOperation } from "../Operations/updateFilterOperation";
+import { OperationBuilder } from "./operationBuilder";
+import {todosStore} from '../Store/todosStore';
 
 export class ServiceFactory {
    
@@ -13,32 +15,46 @@ export class ServiceFactory {
         let service = {};
 
         service.setTodos = this._generateOperation([
-            setTodosOperation,
+            new SetTodosOperation(todosStore),
             new LogOperation("setTodos")
         ]);
 
-        service.addTodo = this._generateOperation([
-            addTodoOperation,
+        /* service.addTodo = this._generateOperation([
+            new AddTodoOperation(),
             new LogOperation("addTodo")
-        ]);
+        ]); */
+
+        service.addTodo = new OperationBuilder(new AddTodoOperation())
+        .then([
+            new ToggleTodoOperation(),
+            new LogOperation("ToggleTodo")
+        ])
+        .build();
 
         service.removeTodo = this._generateOperation([
-            removeTodoOperation,
+            new RemoveTodoOperation(),
             new LogOperation("removeTodo")
         ]);
 
-        service.toggleTodo = this._generateOperation([
-            toggleTodoOperation,
+        /* service.toggleTodo = this._generateOperation([
+            new ToggleTodoOperation(),
             new LogOperation("toggleTodo")
-        ]);
+        ]); */
+
+        service.toggleTodo = new OperationBuilder(new ToggleTodoOperation())
+        .then([
+            new RemoveTodoOperation(),
+            new LogOperation("RemoveTodo")
+        ])
+        .build();
 
         service.editTodo = this._generateOperation([
-            editTodoOperation,
+            new EditTodoOperation(),
             new LogOperation("editTodo")
         ]);
 
         service.updateFilter = this._generateOperation([
-            updateFilterOperation,
+            new UpdateFilterOperation(todosStore),
             new LogOperation("updateFilter")
         ]);
 

@@ -2,7 +2,8 @@ import { AbstractMethodError } from '../Errors/AbstractMethodError'
 
 export class Operation {
 
-    perform() {
+    async perform() {
         throw AbstractMethodError("perform");
     }
+    
 }

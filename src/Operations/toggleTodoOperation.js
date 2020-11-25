@@ -3,8 +3,10 @@ import { database } from '../Config/firebaseConfig'
 
 export class ToggleTodoOperation extends Operation {
 
-    perform(todo) {
-        database.collection('todos').doc(todo.id).update({completed: !todo.completed});
+    async perform(todo) {
+        await database.collection('todos').doc(todo.id).update({completed: !todo.completed});
+        
+        return todo;
     }
 }
 
